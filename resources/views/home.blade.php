@@ -100,6 +100,14 @@
                                 <p class="card-text">{{ $pizza->description }}</p>
                                 <a href="{{ route('pizza.show', ['id' => $pizza->id]) }}" class="btn btn-primary">Dettagli</a>
                                 <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
+                                
+                                <!-- Modulo di cancellazione -->
+                                <form action="{{ route('pizzas.destroy', ['id' => $pizza->id]) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Sei sicuro di voler eliminare questa pizza?')">Elimina</button>
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -136,7 +144,7 @@
                             <label for="category">Categoria</label>
                             @foreach ($categories as $category)
                                 <div class="form-check">
-                                    <input class="form-check-input @error('category') is-invalid @enderror" type="radio" name="category" id="category{{ $category->id }}" value="{{ $category->id }}" {{ old('category') == $category->id ? 'checked' : '' }}>
+                                    <input class="form-check-input @error('category') is-invalid @enderror" type="radio" name="category" id="category{{ $category->id }}" value="{{ $category->id }}" {{ old('category') == $category->id ? 'checked' : '' }} >
                                     <label class="form-check-label" for="category{{ $category->id }}">
                                         {{ $category->name }}
                                     </label>
