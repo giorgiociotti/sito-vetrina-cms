@@ -11,7 +11,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $pizzas = Pizza::all();
+
+            $pizzas = Pizza::all();
         $categories = Category::orderBy('name')->get();// Recupera tutte le categorie
         $ingredients = Ingredient::orderBy('name')->get();// Recupera tutti gli ingredienti
         return view('home', compact('pizzas','ingredients','categories'));
