@@ -58,7 +58,10 @@
             </div>
         </div>
     </nav>
-
+    <form method="POST" action={{ route('logout') }}>
+    @csrf
+    <button type="submit">Logout</button>
+</form>
     <!-- Header -->
     <header class="header-bg">
         <div class="header-content">
@@ -67,6 +70,7 @@
             <a href="#menu" class="btn btn-primary btn-lg">Vedi il nostro menu</a>
         </div>
     </header>
+    {{Auth::user()}}
 
     <!-- Menu Section -->
     <section id="menu" class="py-5">
