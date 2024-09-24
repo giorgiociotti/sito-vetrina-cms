@@ -1,4 +1,33 @@
-<form action="{{ route('pizza.update', $pizza->id) }}" method="POST" enctype="multipart/form-data">
+<head>
+    <!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        body {
+            padding-top: 56px;
+        }
+        .pizza-img {
+            max-width: 100%;
+            height: auto;
+        }
+        .header-bg {
+            background: url('/images/pizza-banner.jpg') no-repeat center center;
+            background-size: cover;
+            height: 60vh;
+        }
+        .header-content {
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+    </style>
+</head><form action="{{ route('pizza.update', $pizza->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 

@@ -15,6 +15,5 @@ Route::get('/user', function (Request $request) {
 //API Routes
 //Route::get('/all', [ApiPizzaController::class, 'get_all'])->name('api.pizzas.all');
 Route::get('/pizza/{id}', [ApiPizzaController::class, 'get_pizza'])->name('api.pizzas.single');
-//easter egg
-Route::get('/pippo', [PippoController::class, 'showPippo']);
+
 
