@@ -1,6 +1,6 @@
 <!-- Footer -->
- @exextends('footer.blade.php')
- @sesection('footer')
+ @extends('footer.blade')
+ @section('footer')
 <footer class="text-center">
         <div class="container">
             <p>&copy; 2024 Pizzeria. Tutti i diritti riservati.</p>

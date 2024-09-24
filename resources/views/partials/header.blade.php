@@ -1,5 +1,5 @@
-@exextends('app.blade.php')
-@sesection('header')<header class="header-bg">
+@extends('layouts.app')
+@section('header')<header class="header-bg">
         <div class="header-content">
             <h1>Benvenuto alla Pizzeria Online</h1>
             <p>Ordina la tua pizza preferita comodamente da casa</p>

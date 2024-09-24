@@ -1,14 +1,15 @@
-@extends('layout.blade.php')
+@extends('layouts.base')
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pippo</title>
+    <title>Pippo</title> 
 </head>
-@section('content')
 <body>
+
+@section('content')
     <h1>Ecco Pippo!</h1>
-    <img src="{{ $pippoImageUrl }}" alt="Pippo">
-</body>
+    <img src="{{ $pippoImageUrl }}" alt="Pippo">.
 @endsection
 
+</body>
 </html>
