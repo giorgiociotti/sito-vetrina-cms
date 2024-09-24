@@ -29,3 +29,7 @@ Route::get('/pizza/{id}', [PizzaController::class, 'show'])->name('pizza.show');
 Route::get('/search/{type}/{id}', [PizzaController::class, 'search'])->name('pizza.search');
 Route::post('/pizzas/store', [PizzaController::class, 'store'])->name('pizzas.store');
 Route::delete('/pizzas/{id}', [PizzaController::class, 'destroy'])->name('pizzas.destroy');
+
+// Rotte per la modifica e l'aggiornamento della pizza
+Route::get('/pizza/{id}/edit', [PizzaController::class, 'edit'])->name('pizza.edit');
+Route::put('/pizza/{id}', [PizzaController::class, 'update'])->name('pizza.update');
