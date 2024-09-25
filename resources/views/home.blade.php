@@ -101,7 +101,7 @@
                             <img src="{{ asset('images/' . $pizza->image) }}" class="card-img-top pizza-img" alt="{{ $pizza->name }}">
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $pizza->name }}</h5>
-                                <h5 class="card-title">{{ $pizza->price }}</h5>
+                                <h5 class="card-title">€{{ $pizza->price }}</h5>
                                 <p class="card-text">{{ $pizza->description }}</p>
                                 <a href="{{ route('pizza.show', ['id' => $pizza->id]) }}" class="btn btn-primary">Dettagli</a>
                                 <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
