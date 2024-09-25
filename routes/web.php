@@ -36,3 +36,16 @@ Route::put('/pizza/{id}', [PizzaController::class, 'update'])->name('pizza.updat
 
 //easter egg
 Route::get('/pippo', [PippoController::class, 'showPippo']);
+
+//dashboard
+Route::middleware(['isAdmin'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    
+    Route::get('/users', function () {
+        return 'Users';
+    });
+});
