@@ -105,20 +105,22 @@
                                 <a href="{{ route('pizza.show', ['id' => $pizza->id]) }}" class="btn btn-primary">Dettagli</a>
                                 <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
                                 
-                                <!-- Modulo di cancellazione -->
+                 <!-- Modulo di cancellazione, visibile solo agli amministratori -->
+                 @if(Auth::check() && Auth::user()->isAdmin())
                                 <form action="{{ route('pizzas.destroy', ['id' => $pizza->id]) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Sei sicuro di voler eliminare questa pizza?')">Elimina</button>
                                 </form>
-
-                            </div>
+                            @endif
                         </div>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
+        </div>
 
-            <!-- Form per aggiungere una nuova pizza -->
+            <!-- Form per aggiungere una nuova pizza, visibile solo agli amministratori -->
+        @if(Auth::check() && Auth::user()->isAdmin())
             <div class="row mt-5">
                 <div class="col-md-12">
                     <h3>Aggiungi una nuova pizza</h3>
@@ -198,37 +200,6 @@
                     </form>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section --> 
-    <section id="contact" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center">Contattaci</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <h4>Indirizzo:</h4>
-                    <p>Via della Pizzeria, 123, Roma</p>
-                </div>
-                <div class="col-md-6">
-                    <h4>Telefono:</h4>
-                    <p>+39 06 12345678</p>
-                    <h4>Email:</h4>
-                    <p>info@pizzeria.com</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="text-center">
-        <div class="container">
-            <p>&copy; 2024 Pizzeria. Tutti i diritti riservati.</p>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+        @endif
+    </div>
+</div>
