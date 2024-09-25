@@ -101,6 +101,7 @@
                             <img src="{{ asset('images/' . $pizza->image) }}" class="card-img-top pizza-img" alt="{{ $pizza->name }}">
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $pizza->name }}</h5>
+                                <h5 class="card-title">{{ $pizza->price }}</h5>
                                 <p class="card-text">{{ $pizza->description }}</p>
                                 <a href="{{ route('pizza.show', ['id' => $pizza->id]) }}" class="btn btn-primary">Dettagli</a>
                                 <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
@@ -144,7 +145,16 @@
                                 </span>
                             @enderror
                         </div>
-
+                        <!-- Aggiunta del campo per il prezzo -->
+                        <div class="form-group">
+                            <label for="price">Prezzo (€)</label>
+                            <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" placeholder="Inserisci il prezzo della pizza" value="{{ old('price') }}" step="0.01" required>
+                            @error('price')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                         <!-- Radio Buttons per le categorie -->
                         <div class="form-group">
                             <label for="category">Categoria</label>

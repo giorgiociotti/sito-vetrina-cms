@@ -8,9 +8,8 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PippoController;   
-use App\Http\Controllers\DashboardController; 
-use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\DashboardController;   
+use App\Http\Controllers\UserController;   
 //routes for the pizzeria application
 
 Route::get("/register", [RegisterController::class, 'create'])->name('register');
@@ -18,7 +17,7 @@ Route::post("/register", [RegisterController::class, 'store'])->name('register.s
 
 Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::post('login', [LoginController::class, 'store'])->name('login.store');
-
+    
 Route::post('logout', LogoutController::class)->name('logout');
 Route::post('logout', LogoutController::class)->middleware('auth');
 Route::group(['middleware' => 'auth'], function () {
