@@ -8,6 +8,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard');
+        // Recupera i dati delle tabelle
+        $users = User::all();
+        $pizzas = Pizza::all();
+        $ingredients = Ingredient::all();
+
+        // Passa i dati alla vista
+        return view('dashboard', compact('users', 'pizzas', 'ingredients'));
     }
 }

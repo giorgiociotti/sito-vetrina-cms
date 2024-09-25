@@ -8,6 +8,9 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PippoController;   
+use App\Http\Controllers\DashboardController; 
+use App\Http\Controllers\UserController;
+
 //routes for the pizzeria application
 
 Route::get("/register", [RegisterController::class, 'create'])->name('register');
@@ -49,3 +52,23 @@ Route::middleware(['isAdmin'])->group(function () {
         return 'Users';
     });
 });
+// Rotta per visualizzare tutti gli utenti
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+// Rotta per mostrare il form di creazione di un nuovo utente
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+
+// Rotta per memorizzare un nuovo utente nel database
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
+
+// Rotta per visualizzare un singolo utente
+Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
+
+// Rotta per mostrare il form di modifica di un utente
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+
+// Rotta per aggiornare un utente esistente
+Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+
+// Rotta per cancellare un utente
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
