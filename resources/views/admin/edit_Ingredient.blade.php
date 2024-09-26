@@ -29,7 +29,7 @@
             <input type="text" name="name" id="name" class="form-control" value="{{ $ingredient->name }}" required>
         </div>
         <button type="submit" class="btn btn-primary">Aggiorna</button>
-        <a href="{{ route('admin.index_Ingredient') }}" class="btn btn-secondary">Annulla</a>
+        <a href="{{ route('ingredients.index') }}" class="btn btn-secondary">Annulla</a>
     </form>
 </div>
 

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Pizza;
 use App\Models\Category;
@@ -29,7 +30,7 @@ class IngredientController extends Controller
         ]);
 
         Ingredient::create($request->only('name'));
-        return redirect()->route('admin.index_Ingredient')->with('success', 'Ingrediente creato con successo!');
+        return redirect()->route('ingredients.index')->with('success', 'Ingrediente creato con successo!');
     }
 
     public function edit(Ingredient $ingredient)
@@ -47,17 +48,17 @@ class IngredientController extends Controller
         ]);
 
         $ingredient->update($request->only('name'));
-        return redirect()->route('admin.index_Ingredient')->with('success', 'Ingrediente aggiornato con successo!');
+        return redirect()->route('ingredients.index')->with('success', 'Ingrediente aggiornato con successo!');
     }
 
     public function destroy(Ingredient $ingredient)
     {
         // Facoltativo: Gestire il caso in cui ci siano pizze associate all'ingrediente
         if ($ingredient->pizzas()->count() > 0) {
-            return redirect()->route('admin.index_Ingredient')->with('error', 'Impossibile eliminare l\'ingrediente poiché è associato a una o più pizze.');
+            return redirect()->route('ingredients.index')->with('error', 'Impossibile eliminare l\'ingrediente poiché è associato a una o più pizze.');
         }
 
         $ingredient->delete();
-        return redirect()->route('admin.index_Ingredient')->with('success', 'Ingrediente eliminato con successo!');
+        return redirect()->route('ingredients.index')->with('success', 'Ingrediente eliminato con successo!');
     }
 }

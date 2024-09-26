@@ -30,7 +30,7 @@
                     <tr>
                         <td>{{ $ingredient->name }}</td>
                         <td>
-                            <a href="{{ route('admin.edit_Ingredient', $ingredient) }}" class="btn btn-warning btn-sm">Modifica</a>
+                            <a href="{{ route('ingredients.edit', $ingredient) }}" class="btn btn-warning btn-sm">Modifica</a>
                             <form action="{{ route('ingredients.destroy', $ingredient) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
@@ -43,7 +43,7 @@
         </table>
     @endif
 
-    <a href="{{ route('admin.create_Ingredient') }}" class="btn btn-success">Aggiungi Ingrediente</a>
+    <a href="{{ route('ingredients.create') }}" class="btn btn-success">Aggiungi Ingrediente</a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
