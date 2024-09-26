@@ -134,7 +134,7 @@
                             </tbody>
                         </table>
                     @endif
-                    <a href="{{ route('pizza.edit', $pizza) }}" class="btn btn-success">Aggiungi Pizza</a>
+                    <a href="{{ route('pizza.create', $pizza) }}" class="btn btn-success">Aggiungi Pizza</a>
                 </div>
             </div>
         </div>

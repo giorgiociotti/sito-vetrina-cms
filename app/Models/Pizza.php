@@ -16,6 +16,7 @@ class Pizza extends Model
         'description',
         'category_id',
         'image',
+        'price',
     ];
 
     // Relazione molti a molti con Ingredient

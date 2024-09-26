@@ -68,6 +68,7 @@ class PizzaController extends Controller
             'ingredients' => 'nullable|array',
             'ingredients.*' => 'exists:ingredients,id',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Valida il file immagine
+            'price' => 'required'
         ]);
 
         // Controlla se una pizza con lo stesso nome esiste già nel database
@@ -93,6 +94,7 @@ class PizzaController extends Controller
             'description' => $request->input('description'),
             'category_id' => $request->input('category'),
             'image' => $photoPath,  // Salva il percorso dell'immagine nel campo 'image'
+            'price'=> $request
         ]);
 
         // Associa gli ingredienti alla pizza
@@ -131,8 +133,9 @@ public function edit($id)
     $ingredients = Ingredient::all();
     
     // Ritorna una vista con i dati della pizza, categorie e ingredienti
-    return view('edit_pizza', compact('pizza', 'categories', 'ingredients'));
+    return view('admin.edit_pizza', compact('pizza', 'categories', 'ingredients'));
 }
+
 // Metodo per aggiornare una pizza esistente
 public function update(Request $request, $id)
 {
@@ -144,6 +147,7 @@ public function update(Request $request, $id)
         'ingredients' => 'nullable|array',
         'ingredients.*' => 'exists:ingredients,id',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // L'immagine è opzionale
+        'price' => 'required|numeric|min:0',
     ]);
 
     // Trova la pizza per ID
@@ -185,5 +189,14 @@ public function update(Request $request, $id)
     // Reindirizza con un messaggio di successo
     return redirect()->route('home')->with('success', 'Pizza "' . $pizza->name . '" aggiornata con successo!');
 }
+ // Metodo per visualizzare il modulo di creazione di una nuova pizza
+ public function add()
+ {
+     $categories = Category::all(); // Assicurati di avere il modello Category
+     $ingredients = Ingredient::all(); // Assicurati di avere il modello Ingredient
+ 
+     return view('admin.create_pizza', compact('categories', 'ingredients'));
+ }
 
+          
 }

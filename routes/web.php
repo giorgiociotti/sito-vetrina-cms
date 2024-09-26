@@ -32,6 +32,9 @@ Route::post('/pizzas/store', [PizzaController::class, 'store'])->name('pizzas.st
 Route::delete('/pizzas/{id}', [PizzaController::class, 'destroy'])->name('pizzas.destroy');
 Route::get('/pizza/edit/{id}', [PizzaController::class, 'edit'])->name('pizza.edit');
 Route::put('/pizza/{id}', [PizzaController::class, 'update'])->name('pizza.update');
+// Rotta per visualizzare il modulo di creazione di una nuova pizza
+Route::get('/pizza/add', [PizzaController::class, 'add'])->name('pizza.create');
+
 
 // Easter egg
 Route::get('/pippo', [PippoController::class, 'showPippo']);
