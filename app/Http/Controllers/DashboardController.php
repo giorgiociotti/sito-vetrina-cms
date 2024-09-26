@@ -2,23 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Pizza;
 use App\Models\Category;
 use App\Models\Ingredient;
-use App\Models\User;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        // Recupera i dati delle tabelle
+        // Recupera tutti gli utenti e le pizze
         $users = User::all();
-        $pizzas = Pizza::all();
+        $pizzas = Pizza::with('ingredients', 'category')->get();
         $ingredients = Ingredient::all();
-        $categories = category::all();
 
-        // Passa i dati alla vista
-        return view('dashboard', compact('users', 'pizzas', 'ingredients', 'categories'));
+        // Conta il numero totale di utenti e pizze
+        $userCount = $users->count();
+        $pizzaCount = $pizzas->count();
+
+        // Conta gli utenti che sono admin (assumendo che il campo 'is_admin' indichi se l'utente è un admin)
+        $adminCount = $users->where('is_admin', true)->count();
+
+        // Calcola il prezzo medio delle pizze
+        $averagePizzaPrice = $pizzas->avg('price');
+
+        return view('dashboard', compact('users', 'pizzas', 'ingredients', 'userCount', 'pizzaCount', 'adminCount', 'averagePizzaPrice'));
     }
 }
