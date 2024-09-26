@@ -24,6 +24,9 @@
         .chart-container {
             margin-top: 40px;
         }
+        .card-title {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -45,6 +48,7 @@
                                 <tr>
                                     <th>Username</th>
                                     <th>Email</th>
+                                    <th>Tipo</th> <!-- Nuova colonna per il tipo di utente -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -52,6 +56,7 @@
                                     <tr>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
+                                        <td>{{ $user->is_admin ? 'Admin' : 'Utente' }}</td> <!-- Logica per il tipo di utente -->
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -173,10 +178,9 @@
                     }
                 }
             }
-        }
+        }   
     });
 </script>
-
 
 </body>
 </html>
