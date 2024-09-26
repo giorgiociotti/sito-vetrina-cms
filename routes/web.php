@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PippoController;   
 use App\Http\Controllers\DashboardController;   
 use App\Http\Controllers\UserController;   
+use App\Http\Controllers\IngredientController;
+
 //routes for the pizzeria application
 
 Route::get("/register", [RegisterController::class, 'create'])->name('register');
@@ -71,3 +73,18 @@ Route::put('/users/{user}', [UserController::class, 'update'])->name('users.upda
 
 // Rotta per cancellare un utente
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+// Rotte per la gestione degli ingredienti
+Route::prefix('ingredients')->name('ingredients.')->group(function () {
+    Route::get('/', [IngredientController::class, 'index'])->name('index');
+    Route::get('/create', [IngredientController::class, 'create'])->name('create');
+    Route::post('/', [IngredientController::class, 'store'])->name('store');
+    Route::get('/{ingredient}/edit', [IngredientController::class, 'edit'])->name('edit');
+    Route::put('/{ingredient}', [IngredientController::class, 'update'])->name('update');
+    Route::delete('/{ingredient}', [IngredientController::class, 'destroy'])->name('destroy');
+});
+
+// Rotte per la gestione degli ingredienti
+Route::middleware(['isAdmin'])->group(function () {
+    Route::resource('ingredients', IngredientController::class);
+});
