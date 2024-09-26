@@ -161,7 +161,7 @@
                                     <tr>
                                         <td>{{ $ingredient->name }}</td>
                                         <td>
-                                            <a href="{{ route('ingredients.edit', $ingredient) }}" class="btn btn-warning btn-sm">Modifica</a>
+                                            <a href="{{ route('admin.edit_Ingredient', $ingredient) }}" class="btn btn-warning btn-sm">Modifica</a>
                                             <form action="{{ route('ingredients.destroy', $ingredient) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
@@ -173,7 +173,7 @@
                             </tbody>
                         </table>
                     @endif
-                    <a href="{{ route('ingredients.create') }}" class="btn btn-success">Aggiungi Ingrediente</a>
+                    <a href="{{ route('admin.create_Ingredient') }}" class="btn btn-success">Aggiungi Ingrediente</a>
                 </div>
             </div>
         </div>

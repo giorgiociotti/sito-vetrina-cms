@@ -11,6 +11,7 @@ use App\Http\Controllers\PippoController;
 use App\Http\Controllers\DashboardController;   
 use App\Http\Controllers\UserController;   
 use App\Http\Controllers\IngredientController;
+use App\Http\Controllers\TaskController;
 
 //routes for the pizzeria application
 

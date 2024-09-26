@@ -11,12 +11,12 @@ class IngredientController extends Controller
     public function index()
     {
         $ingredients = Ingredient::all();
-        return view('ingredients.index', compact('ingredients'));
+        return view('admin.index_Ingredient', compact('ingredients'));
     }
 
     public function create()
     {
-        return view('ingredients.create');
+        return view('admin.create_Ingredient');
     }
 
     public function store(Request $request)
@@ -29,12 +29,12 @@ class IngredientController extends Controller
         ]);
 
         Ingredient::create($request->only('name'));
-        return redirect()->route('ingredients.index')->with('success', 'Ingrediente creato con successo!');
+        return redirect()->route('admin.index_Ingredient')->with('success', 'Ingrediente creato con successo!');
     }
 
     public function edit(Ingredient $ingredient)
     {
-        return view('ingredients.edit', compact('ingredient'));
+        return view('admin.edit_Ingredient', compact('ingredient'));
     }
 
     public function update(Request $request, Ingredient $ingredient)
@@ -47,17 +47,17 @@ class IngredientController extends Controller
         ]);
 
         $ingredient->update($request->only('name'));
-        return redirect()->route('ingredients.index')->with('success', 'Ingrediente aggiornato con successo!');
+        return redirect()->route('admin.index_Ingredient')->with('success', 'Ingrediente aggiornato con successo!');
     }
 
     public function destroy(Ingredient $ingredient)
     {
         // Facoltativo: Gestire il caso in cui ci siano pizze associate all'ingrediente
         if ($ingredient->pizzas()->count() > 0) {
-            return redirect()->route('ingredients.index')->with('error', 'Impossibile eliminare l\'ingrediente poiché è associato a una o più pizze.');
+            return redirect()->route('admin.index_Ingredient')->with('error', 'Impossibile eliminare l\'ingrediente poiché è associato a una o più pizze.');
         }
 
         $ingredient->delete();
-        return redirect()->route('ingredients.index')->with('success', 'Ingrediente eliminato con successo!');
+        return redirect()->route('admin.index_Ingredient')->with('success', 'Ingrediente eliminato con successo!');
     }
 }
