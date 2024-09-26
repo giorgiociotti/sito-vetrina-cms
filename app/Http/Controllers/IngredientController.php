@@ -11,7 +11,9 @@ class IngredientController extends Controller
 {
     public function index()
     {
-        $ingredients = Ingredient::all();
+        // Recupera tutti gli ingredienti e ordina per nome
+        $ingredients = Ingredient::orderBy('name')->get();
+    
         return view('admin.index_Ingredient', compact('ingredients'));
     }
 
